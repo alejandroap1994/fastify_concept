@@ -65,6 +65,6 @@ const optionsUser = {
 
 export async  function routes () {
     fastify.get("/", optionsIndex, requestIndex)
-    fastify.get("/request", optionsRequest, requestRequest)
+    fastify.get("/reques", optionsRequest, requestRequest)
     fastify.put("/user/:id", optionsUser, requestUser)
 }
