@@ -3,6 +3,7 @@ import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import {routes} from "./routes/request.routes";
 import {swaggerOptions, swaggerSquema, swaggerUiOptions} from "./docs/swagger";
+import {userRoutes} from "./routes/user-routes";
 
 export const fastify = Fastify({
     logger: true
@@ -11,6 +12,7 @@ export const fastify = Fastify({
 fastify.register(fastifySwagger, swaggerOptions);
 fastify.register(fastifySwaggerUi, swaggerUiOptions);
 fastify.register(routes)
+fastify.register(userRoutes)
 fastify.get("/hello", (request, reply)=>{
     reply.send({message:"hello"})
 })
