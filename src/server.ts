@@ -2,7 +2,7 @@ import Fastify from "fastify"
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import {routes} from "./routes/request.routes";
-import {swaggerOptions, swaggerSquema, swaggerUiOptions} from "./docs/swagger";
+import {swaggerOptions, swaggerUiOptions} from "./docs/swagger";
 import {userRoutes} from "./routes/user-routes";
 
 export const fastify = Fastify({
