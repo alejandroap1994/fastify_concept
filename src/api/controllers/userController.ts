@@ -1,0 +1,31 @@
+import {AddUser} from "../../core/user/application/addUser";
+import {InMemoryUserRepository} from "../../core/user/infra/in-memory-user-repository";
+import {FastifyReply, FastifyRequest} from "fastify";
+import {GetUsers} from "../../core/user/application/getUsers";
+
+const inMemoryRepository = new InMemoryUserRepository()
+
+const addUser = new AddUser(inMemoryRepository)
+const getUsers = new GetUsers(inMemoryRepository)
+
+export class UserController {
+    static async add(request: FastifyRequest, reply: FastifyReply) {
+        const {email} = request.body as { email: string }
+
+        const newUser = await addUser.add(email)
+
+        reply.status(201).send(newUser)
+    }
+
+    static async getAll(request: FastifyRequest, reply: FastifyReply) {
+        const users = await getUsers.getAll()
+        reply.status(200).send(users)
+    }
+
+    static async getById(request: FastifyRequest, reply: FastifyReply) {
+        const {id} = request.params as { id: string }
+        const user = await getUsers.getById(id)
+        console.log(user)
+        reply.status(200).send(user)
+    }
+}
