@@ -11,19 +11,15 @@ export const swaggerOptions = {
         },
 
         tags: [
-            { name: 'Index', description: 'Index related end-points' },
-            { name: 'Request', description: 'Request related end-points' },
-            { name: 'User', description: 'User related end-points' }
+            {name: 'User', description: 'User related end-points'}
         ],
         definitions: {
             User: {
                 type: 'object',
                 required: ['id', 'email'],
                 properties: {
-                    id: { type: 'string', format: 'uuid' },
-                    firstName: { type: 'string' },
-                    lastName: { type: 'string' },
-                    email: {type: 'string', format: 'email' }
+                    id: {type: 'string', format: 'uuid'},
+                    email: {type: 'string', format: 'email'}
                 }
             }
         },
@@ -53,11 +49,11 @@ export const swaggerSquema = {
         body: {
             type: 'object',
             properties: {
-                hello: { type: 'string' },
+                hello: {type: 'string'},
                 obj: {
                     type: 'object',
                     properties: {
-                        some: { type: 'string' }
+                        some: {type: 'string'}
                     }
                 }
             }
@@ -67,14 +63,14 @@ export const swaggerSquema = {
                 description: 'Successful response',
                 type: 'object',
                 properties: {
-                    hello: { type: 'string' }
+                    hello: {type: 'string'}
                 }
             },
             default: {
                 description: 'Default response',
                 type: 'object',
                 properties: {
-                    foo: { type: 'string' }
+                    foo: {type: 'string'}
                 }
             }
         }
