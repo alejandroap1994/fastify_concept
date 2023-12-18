@@ -1,5 +1,5 @@
-import {fastify} from "../../server";
 import {UserController} from "../controllers/userController";
+import {FastifyInstance} from "fastify";
 
 const optionsAddUser = {
     schema: {
@@ -34,7 +34,8 @@ const optionsAddUser = {
                 }
             }
         }
-    }
+    },
+    handler: UserController.add
 }
 
 const optionsGetAllUser = {
@@ -45,15 +46,18 @@ const optionsGetAllUser = {
         response: {
             200: {
                 description: 'Successful response',
-                type: 'object',
-                properties: {
-                    id: {type: 'string'},
-                    email: {type: "string"}
+                type: 'array',
+                items: {
+                    properties: {
+                        id: {type: 'string'},
+                        email: {type: "string"}
+                    }
                 }
             },
 
         }
-    }
+    },
+    handler: UserController.getAll
 }
 
 const optionsGetByIdUser = {
@@ -89,12 +93,13 @@ const optionsGetByIdUser = {
                 }
             }
         }
-    }
+    },
+    handler: UserController.getById
 }
 
-export async function userRoutes() {
-    fastify.post("/", optionsAddUser, UserController.add)
-    fastify.get("/", optionsGetAllUser, UserController.getAll)
-    fastify.get("/:id", optionsGetByIdUser, UserController.getById)
+export async function routes(fastify: FastifyInstance) {
+    fastify.post("/", optionsAddUser)
+    fastify.get("/", optionsGetAllUser)
+    fastify.get("/:id", optionsGetByIdUser)
 
 }
