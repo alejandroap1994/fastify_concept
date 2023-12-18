@@ -1,10 +1,11 @@
-import {InMemoryUserRepository} from "../infra/in-memory-user-repository";
+import {User} from "../domain/user";
+import {IUserRepository} from "../infra/interfaces/userRepository";
 
 export class AddUser {
-    constructor(private readonly userRepository: InMemoryUserRepository) {
+    constructor(private readonly userRepository: IUserRepository) {
     }
 
-    async add(email: string) {
+    async add(email: string): Promise<User> {
         return this.userRepository.addUser(email)
     }
 }

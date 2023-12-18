@@ -1,5 +1,5 @@
 import {User} from "../domain/user";
-import {UserRepository} from "./interfaces/userRepository";
+import {IUserRepository} from "./interfaces/userRepository";
 
 const users: User[] = [
     {
@@ -12,7 +12,7 @@ const users: User[] = [
     }
 ]
 
-export class InMemoryUserRepository implements UserRepository {
+export class InMemoryUserRepository implements IUserRepository {
     async getById(userId: string): Promise<User | null> {
         const user = users.find((user) => user.id === userId)
         if (!user) {
