@@ -30,6 +30,13 @@ export const swaggerOptions = {
 export const swaggerUiOptions = {
     routePrefix: "/docs",
     exposeRoute: true,
+    securityDefinitions: {
+        apiKey: {
+            type: 'apiKey',
+            name: 'apiKey',
+            in: 'header'
+        }
+    }
 };
 
 export const swaggerSquema = {
