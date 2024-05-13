@@ -21,6 +21,9 @@ jobs:
 
       - name: Update .env.dev variable
         run: |
+          git config  user.email "aavila@bemobile.es"
+          git config  user.name "Alejandro"
+          
           # Leer el valor actual de PORT
           CURRENT_PORT=$(grep '^PORT=' .env.dev | sed 's/PORT=//')
 
