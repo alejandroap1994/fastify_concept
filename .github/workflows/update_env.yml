@@ -6,7 +6,7 @@ name: Manual workflow
 # or API.
 on:
   push:
-    branches-ignore:
+    branches:
       - 'main' # O la rama principal de tu repositorio de plantilla
     tags-ignore:
       - '*' # Ignora las etiquetas
