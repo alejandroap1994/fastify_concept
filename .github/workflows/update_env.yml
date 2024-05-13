@@ -19,18 +19,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Update .env variable
+      - name: Update .env.dev variable
         run: |
           # Leer el valor actual de PORT
-          CURRENT_PORT=$(grep '^PORT=' .env | sed 's/PORT=//')
+          CURRENT_PORT=$(grep '^PORT=' .env.dev | sed 's/PORT=//')
 
           # Sumar 1 al valor actual
           NEW_PORT=$((CURRENT_PORT + 1))
 
           # Reemplazar el valor de PORT en el archivo .env
-          sed -i "s/^PORT=.*/PORT=$NEW_PORT/" .env
+          sed -i "s/^PORT=.*/PORT=$NEW_PORT/" .env.dev
 
           # Hacer commit con los cambios
-          git add .env
+          git add .env.dev
           git commit -m "Update PORT variable in .env file"
           git push
