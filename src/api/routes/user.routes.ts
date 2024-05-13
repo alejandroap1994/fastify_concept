@@ -101,5 +101,6 @@ export async function routes(fastify: FastifyInstance) {
     fastify.post("/", optionsAddUser)
     fastify.get("/", optionsGetAllUser)
     fastify.get("/:id", optionsGetByIdUser)
+    fastify.post("/error", UserController.sendError)
 
 }

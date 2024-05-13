@@ -29,5 +29,18 @@ export class UserController {
         const user = await getUser.getById(id)
         console.log(user)
         reply.status(200).send(user)
+
+    }
+
+    static async sendError(request: FastifyRequest, reply: FastifyReply) {
+        try {
+            const {email} = request.body as { email: string }
+            if (email === "error") {
+                throw new Erro
+            }
+            reply.status(200).send({email})
+        } catch (e) {
+            reply.status(400).send(e)
+        }
     }
 }
