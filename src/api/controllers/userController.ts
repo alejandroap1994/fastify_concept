@@ -36,7 +36,7 @@ export class UserController {
         try {
             const {email} = request.body as { email: string }
             if (email === "error") {
-                throw new Erro
+                throw new Error("Error")
             }
             reply.status(200).send({email})
         } catch (e) {
